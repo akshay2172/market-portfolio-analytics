@@ -80,9 +80,7 @@ async function calculatePortfolioAnalytics(): Promise<PortfolioAnalyticsResponse
     })
   );
 
-  // 1. Calculate Daily Portfolio Value
-  // We need to align dates across all assets.
-  // Map: DateString -> TotalValue
+
   const dateValueMap = new Map<string, number>();
   
   // Initialize map with dates from the first asset (assuming mostly overlapping trading days)
