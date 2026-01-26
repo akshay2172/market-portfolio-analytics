@@ -97,7 +97,7 @@ export default function MarketData() {
             </div>
           ) : (
             <ResponsiveContainer width="100%" height="80%">
-              <ComposedChart data={history}>
+             <ComposedChart data={history ?? []}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#ffffff10" vertical={false} />
                 <XAxis 
                   dataKey="date" 

@@ -8,7 +8,6 @@ const allowlist = [
   "@google/generative-ai",
   "axios",
   "connect-pg-simple",
-  "cors",
   "date-fns",
   "drizzle-orm",
   "drizzle-zod",
@@ -35,10 +34,10 @@ const allowlist = [
 async function buildAll() {
   await rm("dist", { recursive: true, force: true });
 
-  console.log("building client...");
+  console.log("building client... - build.ts:37");
   await viteBuild();
 
-  console.log("building server...");
+  console.log("building server... - build.ts:40");
   const pkg = JSON.parse(await readFile("package.json", "utf-8"));
   const allDeps = [
     ...Object.keys(pkg.dependencies || {}),

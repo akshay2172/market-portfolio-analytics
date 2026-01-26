@@ -8,12 +8,13 @@ import { createServer } from "http";
 import cors from "cors";
 
 const app = express();
+const httpServer = createServer(app);
 
 app.use(cors({
   origin: "https://marketportfolio.netlify.app"
 }));
 
-const httpServer = createServer(app);
+
 
 declare module "http" {
   interface IncomingMessage {
@@ -39,7 +40,7 @@ export function log(message: string, source = "express") {
     hour12: true,
   });
 
-  console.log(`${formattedTime} [${source}] ${message} - index.ts:42`);
+  console.log(`${formattedTime} [${source}] ${message} - index.ts:43`);
 }
 
 app.use((req, res, next) => {
@@ -75,7 +76,7 @@ app.use((req, res, next) => {
     const status = err.status || err.statusCode || 500;
     const message = err.message || "Internal Server Error";
 
-    console.error("Internal Server Error: - index.ts:78", err);
+    console.error("Internal Server Error: - index.ts:79", err);
 
     if (res.headersSent) {
       return next(err);
