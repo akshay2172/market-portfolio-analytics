@@ -11,7 +11,7 @@ const app = express();
 const httpServer = createServer(app);
 
 app.use(cors({
-  origin: "https://marketportfolio.netlify.app"
+  origin: "*"
 }));
 
 
