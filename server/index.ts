@@ -5,15 +5,10 @@ import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { serveStatic } from "./static";
 import { createServer } from "http";
-import cors from "cors";
+
 
 const app = express();
 const httpServer = createServer(app);
-
-app.use(cors({
-  origin: "*"
-}));
-
 
 
 declare module "http" {
@@ -40,7 +35,7 @@ export function log(message: string, source = "express") {
     hour12: true,
   });
 
-  console.log(`${formattedTime} [${source}] ${message} - index.ts:43`);
+  console.log(`${formattedTime} [${source}] ${message} - index.ts:38`);
 }
 
 app.use((req, res, next) => {
@@ -76,7 +71,7 @@ app.use((req, res, next) => {
     const status = err.status || err.statusCode || 500;
     const message = err.message || "Internal Server Error";
 
-    console.error("Internal Server Error: - index.ts:79", err);
+    console.error("Internal Server Error: - index.ts:74", err);
 
     if (res.headersSent) {
       return next(err);
