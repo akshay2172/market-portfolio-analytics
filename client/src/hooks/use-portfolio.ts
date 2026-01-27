@@ -7,7 +7,8 @@ export function usePortfolioAnalytics() {
   return useQuery({
     queryKey: [api.portfolio.getAnalytics.path],
     queryFn: async () => {
-         const fullUrl = `${BASE_URL}${api.portfolio.getAnalytics.path}`;
+      const paths = '/api/portfolio/analytics';
+      const fullUrl = `${BASE_URL}${paths}`;
       const res = await fetch(fullUrl);
       if (!res.ok) throw new Error("Failed to fetch portfolio analytics");
       return api.portfolio.getAnalytics.responses[200].parse(await res.json());
@@ -21,7 +22,8 @@ export function useMarketHistory(symbol: string) {
   return useQuery({
     queryKey: [api.market.getHistory.path, symbol],
     queryFn: async () => {
-      const url = `${BASE_URL}${buildUrl(api.market.getHistory.path, { symbol })}`
+      const market = '/api/market/:symbol';
+      const url = buildUrl(market, { symbol })
       const res = await fetch(url);
       if (!res.ok) {
         if (res.status === 404) return null;
